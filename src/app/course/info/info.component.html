@@ -1,0 +1,16 @@
+<h2>Descrição do Curso</h2>
+<div class="box-center" *ngFor="let course of dadosCourse">
+<div class="box">
+   <p>Id:{{ course.id }}</p> 
+   <p>Name:{{ course.name }}</p> 
+   <p>Preço: R${{ course.price }}</p> 
+   <p>Ranking:{{ course.rating }}</p>
+   <p>Data de Criação:{{ course.relaseDate }}</p> 
+   <p>Duração:{{ course.duration }}</p>  
+   <p>Descrição:{{ course.description }}</p> 
+   <p>Codigo:{{ course.code }}</p> 
+</div>
+<div class="box2">
+    <img [src]="course.imageUrl" >
+</div>
+</div>
