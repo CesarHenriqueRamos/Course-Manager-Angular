@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { CourseComponent } from './course.component';
 import { InfoComponent } from './info/info.component';
+
 const routes: Routes = [  
     {path:'', component:CourseComponent},
     {path:'info/:id', component:InfoComponent}  
