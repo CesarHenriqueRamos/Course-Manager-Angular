@@ -1,11 +1,11 @@
 <h2>Descrição do Curso</h2>
-<div class="box-center" *ngFor="let course of dadosCourse">
+<div class="box-center" *ngIf="course" >
 <div class="box">
    <p>Id:{{ course.id }}</p> 
    <p>Name:{{ course.name }}</p> 
    <p>Preço: R${{ course.price }}</p> 
    <p>Ranking:{{ course.rating }}</p>
-   <p>Data de Criação:{{ course.relaseDate }}</p> 
+   <p>Data de Criação:{{ course.releaseDate }}</p> 
    <p>Duração:{{ course.duration }}</p>  
    <p>Descrição:{{ course.description }}</p> 
    <p>Codigo:{{ course.code }}</p> 
@@ -14,3 +14,103 @@
     <img [src]="course.imageUrl" >
 </div>
 </div>
+<hr>
+<h2>Editar Dados</h2>
+<form #courseForm="ngForm" *ngIf="course" >
+    <div class="form-group row">
+        <label for="" class="col-sm-2">Nome:</label>
+        <!-- lembrete de como é para inserir  uma classe -->
+        <div class="col-sm-10">
+            <input type="text"             
+            [(ngModel)]="course.name" 
+            name="name"
+            #courseName="ngModel" 
+            required
+            class="form-control"
+            [ngClass] = "{'is-invalid': courseName.invalid}">
+            <div class="invalid-feedback">
+                <span>Campo Obrigatório</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2">Preço:</label>
+        <div class="col-sm-10">
+            <input type="text"             
+            [(ngModel)]="course.price" 
+            name="price"
+            #coursePrice="ngModel" 
+            required
+            class="form-control"
+            type="number"
+            [ngClass] = "{'is-invalid': coursePrice.invalid}">
+            <div class="invalid-feedback">
+                <span>Campo Obrigatório</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2">Descrição:</label>
+        <div class="col-sm-10">
+            <input type="text"             
+            [(ngModel)]="course.description" 
+            name="description"
+            #courseDescription="ngModel" 
+            required
+            class="form-control"
+            [ngClass] = "{'is-invalid': courseDescription.invalid}">
+            <div class="invalid-feedback">
+                <span>Campo Obrigatório</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2">Duração:</label>
+        <div class="col-sm-10">
+            <input type="text"             
+            [(ngModel)]="course.duration" 
+            name="duration"
+            #courseDuration="ngModel" 
+            required
+            type="number"
+            class="form-control"
+            [ngClass] = "{'is-invalid': courseDuration.invalid}">
+            <div class="invalid-feedback">
+                <span>Campo Obrigatório</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2">Classificação:</label>
+        <div class="col-sm-10">
+            <input type="text"             
+            [(ngModel)]="course.rating" 
+            name="ranking"
+            #courseRanking="ngModel" 
+            required
+            type="number"
+            class="form-control"
+            [ngClass] = "{'is-invalid': courseRanking.invalid}">
+            <div class="invalid-feedback">
+                <span>Campo Obrigatório</span>
+            </div>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="" class="col-sm-2">Codigo:</label>
+        <div class="col-sm-10">
+            <input type="text"             
+            [(ngModel)]="course.code" 
+            name="code"
+            #courseCode="ngModel" 
+            required
+            class="form-control"
+            [ngClass] = "{'is-invalid': courseCode.invalid}">
+            <div class="invalid-feedback">
+                <span>Campo Obrigatório</span>
+            </div>
+        </div>
+    </div>
+    <button [disabled]="courseForm.invalid" (click)="onSave()" class="btn btn-success mr-2">Salvar</button>
+    <button [routerLink]="['/course']" class="btn btn-secondary">Cancelar</button>
+</form>

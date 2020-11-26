@@ -17,10 +17,30 @@ export class CourseComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this._courses = this.courseService.retriveAll();
-    this.filterCourse = this._courses;
+    this.retrieveAll();
   }
-  
+  retrieveAll():void{
+    this.courseService.retriveAll().subscribe({
+      next: courses =>{
+        this._courses = courses;
+        this.filterCourse = this._courses;
+      },
+      error: err => {
+        console.log('Erro',err)
+      }
+    });    
+  }
+  delete(id:number){
+    this.courseService.deleteById(id).subscribe({
+      next: () =>{
+        console.log("deletado com Sucesso");
+        this.retrieveAll();
+      },
+      error: err => {
+        console.log("Erro", err);
+      }
+    })
+  }
   set filter(value:string){
     this._filterBy = value;
     //filtro de cursos
