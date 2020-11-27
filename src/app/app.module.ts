@@ -5,19 +5,16 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-
-import { NavBarComponent } from './nav-bar/nav-bar.component';
-import { HomeComponent } from './home/home.component';
-import { PgErrorComponent } from './pg-error/pg-error.component';
+import { HomeComponent } from './core/component/home/home.component';
+import { PgErrorComponent } from './core/component/pg-error/pg-error.component';
 import { CourseModule } from './course/course.module';
+import { CoreModule } from './core/core.module';
 
 
 
 @NgModule({
   declarations: [
     AppComponent,
-
-    NavBarComponent,
     HomeComponent,
     PgErrorComponent
   ],
@@ -26,7 +23,8 @@ import { CourseModule } from './course/course.module';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    CourseModule
+    CourseModule,
+    CoreModule
   ],
   providers: [],
   bootstrap: [AppComponent]
